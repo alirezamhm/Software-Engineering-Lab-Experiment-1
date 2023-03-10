@@ -1,4 +1,6 @@
 import argparse
+import os
+from urllib.request import urlretrieve
 from bs4 import BeautifulSoup
 import requests
 
@@ -25,3 +27,15 @@ for link in soup.find_all('a'):
         video_hrefs.append(href)
         
 print(f"Number of videos found: {len(video_hrefs)}")
+
+output_dir = args.Output
+os.makedirs(output_dir, exist_ok=True)
+
+for href in video_hrefs:
+    print(f"Downloading: {href}")
+    try:
+        file_name = href.split("/")[-1]
+        urlretrieve(href.replace(" ", "%20"), os.path.join(output_dir, file_name))
+    except Exception as e:
+        print(f"Exception occured \n{e}")
+print("Download finished.")

@@ -7,7 +7,7 @@ FORMATS = ('.mkv', '.mp4')
 parser = argparse.ArgumentParser(description="Downloads all video files in the given page")
 
 parser.add_argument('-l', '--Link', help='Page Url', required=True)
-parser.add_argument("-o", "--Output", help="Output directory")
+parser.add_argument("-o", "--Output", help="Output directory", required=True)
 
 args = parser.parse_args()
 url = args.Link

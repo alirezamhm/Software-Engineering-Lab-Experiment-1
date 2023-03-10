@@ -1,8 +1,8 @@
 import argparse
 from bs4 import BeautifulSoup
-
 import requests
 
+FORMATS = ('.mkv', '.mp4')
 
 parser = argparse.ArgumentParser(description="Downloads all video files in the given page")
 
@@ -13,3 +13,11 @@ args = parser.parse_args()
 url = args.Link
 reqs = requests.get(url)
 soup = BeautifulSoup(reqs.text, 'html.parser')
+
+video_hrefs = []
+for link in soup.find_all('a'):
+    href = link.get('href')
+    if not href:
+        continue
+    if href.endswith(FORMATS):
+        video_hrefs.append(href)

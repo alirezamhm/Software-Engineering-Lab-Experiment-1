@@ -1,6 +1,13 @@
 # Software-Engineering-Lab-Experiment-1
 ---
 ## Report
+This is a script to download all video files in a given web page.
+
+The project is sepereated into three branches. Main branch is where all offical releases will be kept. Dev branch is for development and all new features will be experimented and added. If these new features were functional, dev branch will be merged with the main branch to create a new release. Finally, bugfix branch is for resolving any existing bugs in the project.
+
+The main branch is protected so that a merge can only happen with opening a new pull request.
+
+Two conflicts happened while merging the bugfix branch with the dev branch. These conflicts were handled and pull requests were approved.
 
 
 ---

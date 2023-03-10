@@ -11,3 +11,5 @@ parser.add_argument("-o", "--Output", help="Output directory")
 
 args = parser.parse_args()
 url = args.Link
+reqs = requests.get(url)
+soup = BeautifulSoup(reqs.text, 'html.parser')

@@ -21,3 +21,5 @@ for link in soup.find_all('a'):
         continue
     if href.endswith(FORMATS):
         video_hrefs.append(href)
+        
+print(f"Number of videos found: {len(video_hrefs)}")

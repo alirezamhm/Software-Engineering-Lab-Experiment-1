@@ -1,4 +1,5 @@
 import argparse
+import os
 from bs4 import BeautifulSoup
 import requests
 
@@ -23,3 +24,6 @@ for link in soup.find_all('a'):
         video_hrefs.append(href)
         
 print(f"Number of videos found: {len(video_hrefs)}")
+
+output_dir = args.Output
+os.makedirs(output_dir, exist_ok=True)

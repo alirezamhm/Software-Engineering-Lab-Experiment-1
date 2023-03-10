@@ -28,14 +28,17 @@ for link in soup.find_all('a'):
         
 print(f"Number of videos found: {len(video_hrefs)}")
 
-output_dir = args.Output
+output_dir = args.Output if args.Output else "./"
 os.makedirs(output_dir, exist_ok=True)
-
 for href in video_hrefs:
     print(f"Downloading: {href}")
     try:
-        file_name = href.split("/")[-1]
-        urlretrieve(href.replace(" ", "%20"), os.path.join(output_dir, file_name))
+        if href.startswith("http"):
+            video_url = href
+        else:
+            video_url = url + href
+        file_name = href.split("/")[-1].replace("%20", " ")
+        urlretrieve(video_url.replace(" ", "%20"), os.path.join(output_dir, file_name))
     except Exception as e:
         print(f"Exception occured \n{e}")
 print("Download finished.")

@@ -14,6 +14,8 @@ url = args.Link
 reqs = requests.get(url)
 soup = BeautifulSoup(reqs.text, 'html.parser')
 
+url = url[:url.index("?")] if "?" in url else url
+
 video_hrefs = []
 for link in soup.find_all('a'):
     href = link.get('href')

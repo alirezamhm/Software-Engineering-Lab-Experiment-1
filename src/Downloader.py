@@ -7,7 +7,7 @@ FORMATS = ('.mkv', '.mp4')
 parser = argparse.ArgumentParser(description="Downloads all video files in the given page")
 
 parser.add_argument('-l', '--Link', help='Page Url', required=True)
-parser.add_argument("-o", "--Output", help="Output directory", required=True)
+parser.add_argument("-o", "--Output", help="Output directory for downloads", required=True)
 
 args = parser.parse_args()
 url = args.Link
@@ -23,3 +23,5 @@ for link in soup.find_all('a'):
         continue
     if href.endswith(FORMATS):
         video_hrefs.append(href)
+        
+print(f"Number of videos found: {len(video_hrefs)}")
